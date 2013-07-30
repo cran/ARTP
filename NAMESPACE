@@ -1,0 +1,4 @@
+useDynLib(ARTP)
+export(runPermutations, single.marker.test, ARTP_pathway, plot_genes)
+
+

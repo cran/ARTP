@@ -1,0 +1,102 @@
+
+\documentclass[a4paper]{article}
+
+% \VignetteIndexEntry{Vignette}
+
+\begin{document}
+
+\title{ARTP(Adaptive Rank Truncated Product) Package}
+\maketitle
+
+<<>>=
+library(ARTP)
+@
+
+\section*{Detailed examples of computing the gene and pathway p-values}
+
+We will start with the sample data of SNPs and sample phenotype data to generate the observed and
+permutation p-values for each SNP in the pathway.
+First, lets get the paths to the phenotype and genotype data
+<<>>=
+pheno_file <- system.file("sampleData", "pheno_data.txt", package="ARTP")
+geno_file  <- system.file("sampleData", "geno_data.txt", package="ARTP")
+print(pheno_file)
+print(geno_file)
+@
+
+The phenotype file is tab-delimited text file and has columns, "ID", "Y", "X1", and "X2", where "ID" is the subject id,
+"Y" is the case-control status, "X1" and "X2" are continuous variables.
+Define the list that describes the phenotype data:
+<<>>=
+pheno.list <- list(file=pheno_file, delimiter="\t", header=1, id.var="ID", 
+                   response.var="Y", main.vars=c("X1", "X2"))
+@
+
+The genotype file is also a tab-delimited text file of type 2 where row 1 has the string "ldat" followed by
+the subject ids. The first column of this file has the SNP ids.
+Define the list that describes the genotype data:
+<<>>=
+geno.list <- list(file=geno_file, delimiter="\t", file.type=2)
+@
+
+We need to choose a directory that has write access to serve as the directory where the
+output files will be created. For this example, let this directory be the working directory.
+<<>>=
+out.dir <- getwd()
+print(out.dir)
+@
+
+We also need a file that gives the SNPs belonging to each gene. Let us use the sample
+gene-SNP file which is a tab-delimited text file with columns "SNP" and "Gene".
+<<>>=
+gs_file  <- system.file("sampleData", "gene_SNP_data.txt", package="ARTP")
+print(gs_file)
+@
+
+Define the list that describes this file:
+<<>>=
+gs.list <- list(file=gs_file, snp.var="SNP", gene.var="Gene", delimiter="\t", header=1)
+@
+
+
+\section*{Calling the runPermutations and ARTP\_pathway functions}
+
+Define the names of the 2 output files that will store the observed p-values and permutated p-values.
+<<>>=
+obs.outfile  <- paste(out.dir, "/", "obs.txt", sep="")
+perm.outfile <- paste(out.dir, "/", "perm.txt", sep="") 
+@
+
+Set up the options list. Let us run 50 permutations and choose to generate a new response vector
+for each permutation (perm.method=2).
+<<>>=
+nperm   <- 50
+op.list <- list(nperm=nperm, obs.outfile=obs.outfile, perm.outfile=perm.outfile, perm.method=2)
+@
+
+Run the permutations. The base (NULL) model summary will be printed to the console.
+<<>>=
+runPermutations(geno.list, pheno.list, 1, op=op.list)
+@
+
+Now we have the observed p-values and permutated p-values stored in the files obs.outfile and
+perm.outfile so that we can compute the gene and pathway p-values by using the default parameters for op (see 
+the manual for details).
+<<>>=
+set.seed(76523)
+ret <- ARTP_pathway(obs.outfile, perm.outfile, nperm, out.dir, gene.list=gs.list)
+print(ret)
+@
+
+Now compute the pathway p-value assuming all the SNPs belong to the same gene. Note that if
+gene.list is NULL, then the program assumes all SNPs belong to the same gene.
+<<>>=
+set.seed(76523)
+ret <- ARTP_pathway(obs.outfile, perm.outfile, nperm, out.dir)
+print(ret)
+@
+
+
+\end{document}
+
+%
