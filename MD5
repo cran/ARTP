@@ -1,16 +1,16 @@
-89e3c650e75ae6233b7fd9374cdb2c98 *DESCRIPTION
-06eb50f3d110df1596717ef188b39fc7 *NAMESPACE
+617bc630126b4b2329fc226c8206a62f *DESCRIPTION
+a06db2602803db8034845184f65f73b9 *NAMESPACE
 09516be085130b531146a6fb1f890fc3 *NEWS
 0245ebe13fbf5e7d7dbf74210d8c5fba *R/combineBypathway_Kai_C.R
 615889d9ef77c76db4597e00b0c62dfb *R/wga.R
-ace3f808c7610040c43532a7240b9f04 *R/wga_combine.R
+94948923b3159cb06d2356921507d75d *R/wga_combine.R
 c7ad813bb313943d51b073bddae3dfdb *R/wga_glu.R
 ca8d259ebd0c98a9777d9e7ad0b302fe *R/wga_permReg.R
 78c572c2a40182fa7157f20ac51ff746 *R/wga_plot.R
 a7ecba1c94c7a65b3d0bc05fe48fecac *R/wga_read.R
 16f4d3b2435e3a9460b2e2cd9b40bd68 *R/wga_stat.R
 dd5c4e0d4dbdfa8b914054f066c93f4f *R/wga_util.R
-e743c185a6c66e7c6631bbfd0c336980 *build/vignette.rds
+6514621ba47f0ee4578d9dc3a74dafd1 *build/vignette.rds
 7bbfbd6b9c103ee770fdf0c0c0cdadb7 *data/gene_SNP_data.txt.gz
 0849ba9c72d39c766c1d1bcfba47ec39 *data/geno_data.rda
 fa9c1dafabdf04e49b74447b85f04887 *data/obs_pvalues.txt.gz
@@ -18,7 +18,7 @@ caa7daba2e8016aa6fed907f21d257dd *data/perm_pvalues.txt.gz
 6257da294bcd5582e88774a8c4d2e6da *data/pheno_data.txt.gz
 8cd6b369f5ee63c20ea6e5c2e620a505 *inst/doc/vignette.R
 05a0378f306aa0dbd2650d6ef0677d62 *inst/doc/vignette.Rnw
-a484250793f05ea5cc525535016937bd *inst/doc/vignette.pdf
+229eabc6705130f6deacb75215bf59f3 *inst/doc/vignette.pdf
 f2a012850eb1b0639568d702f469c874 *inst/sampleData/gene_SNP_data.txt
 d782242b028552aa2e86138daad0d910 *inst/sampleData/geno_data.txt
 8639cfe3cf0f621c04ee29d633aefa56 *inst/sampleData/obs_pvalues.txt
@@ -37,5 +37,5 @@ e80198d007996a106c9a3b3248a83452 *man/pheno.list.Rd
 f17c1ebba8938bd4c7f355049962f76a *man/runPermutations.Rd
 c9ce00cb461cd151703698357dccd4fc *man/single.marker.test.Rd
 ceb9f059f50a2917dea4cc08baeb8297 *man/snp.list.Rd
-47ae4d27c026f58bb5a79340b2577b48 *src/code.c
+19cab83d0d6e00bb99f92d62a952bf4e *src/code.c
 05a0378f306aa0dbd2650d6ef0677d62 *vignettes/vignette.Rnw

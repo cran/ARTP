@@ -1,4 +1,5 @@
 useDynLib(ARTP)
+import(utils, stats, graphics, grDevices)
 export(runPermutations, single.marker.test, ARTP_pathway, plot_genes)
 
 

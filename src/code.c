@@ -27,6 +27,20 @@
 
 typedef unsigned char binary;
 
+void ARTP_pathway(char **obsfile, char **permfile, int *nr, int *nc, int *cols, int *ncols, int *geneStart, int *geneStop, int *ngene, int *rowsize,\
+                  int *inspect_list, int *llen, int *iStart, int *iStop, int *inspect_path, int *ilen, char **r2Files, int *r2Flag, char **outfile,\
+                  int *ties_method, int *method, double *parms, double *ret_p_obs, double *ret_minp, int *ret_nperm);
+
+
+
+static const R_CMethodDef callMethods[] = {
+  {"ARTP_pathway", (DL_FUNC)&ARTP_pathway, 25},
+  {NULL, NULL, 0}
+};
+
+
+
+
 /*
 double dvec_max(double *, int, int *);
 void ivecinit(int *, int, int);
@@ -1188,7 +1202,8 @@ int *inspect_path, *ilen;  /* Inspect pathway vector */
 char **outfile; /* For gene results */
 double *ret_p_obs, *ret_minp;  /* Return vectors */
 int *ret_nperm, *ties_method;
-char **r2Files, *r2Flag;
+char **r2Files;
+int *r2Flag;
 int *method; 
 double *parms; 
 {
@@ -1223,4 +1238,9 @@ double *parms;
 
 } /* END: ARTP_pathway */
  
+void R_init_ARTP(DllInfo *dll)
+{
+    R_registerRoutines(dll, callMethods, NULL, NULL, NULL);
+    R_useDynamicSymbols(dll, TRUE);
+}
 

@@ -2048,7 +2048,7 @@ mima <- function(yi, vi, mods, method="REML", threshold=0.00001, maxiter=100, al
 		if (conv == 0) {
                   return(NULL)
 			cat("Fisher scoring algorithm did not converge\nTry increasing maxiter or use a different estimation method\n")
-			break
+			#break
 		}
 
 	}
